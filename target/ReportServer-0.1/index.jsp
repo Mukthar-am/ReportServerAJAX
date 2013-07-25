@@ -21,15 +21,32 @@
 			});
 		});
 	});
+	
+
+	$(document).ready(function() {
+		
+			var $dim = $("select#details").val();
+			$.get('adformatresults', {
+				groupby : $dim
+			}, function(responseJson) {
+				var $select = $('#details');
+				$select.find('option').remove();
+				$.each(responseJson, function(key, value) {
+					$('<option>').val(key).text(value).appendTo($select);
+				});
+			});
+		
+	});
+	
+	
 </script>
 </head>
 <body>
 
 	<h1>PSO webapp server: Results Page</h1>
-	<img src="/ReportServer/images/index.jpg" align="right"  />
-	
-	<br />
-	Group Results By:
+	<img src="/ReportServer/images/index.jpg" align="right" />
+
+	<br /> Group Results By:
 	<select id="dimension">
 		<option>Group by...</option>
 		<option value="Slot">Slot</option>
@@ -44,11 +61,18 @@
 	<select id="details">
 		<option>details</option>
 	</select>
-	
-	<br/>
-	<br /><input type="button" id="submit" value="Submit Query">
-	
 
-	
+	<br />
+	<br />
+	<input type="button" id="submit" value="Submit Query"
+		onclick="buttonclick">
+	<!--  <INPUT TYPE="BUTTON" VALUE="Button 1" ONCLICK="buttonAction()"> -->
+
+	<FORM NAME="form1" METHOD="POST">
+		<INPUT TYPE="HIDDEN" NAME="buttonName"> <INPUT TYPE="BUTTON"
+			VALUE="Button 1" ONCLICK="button1()">
+	</FORM>
+
+
 </body>
 </html>

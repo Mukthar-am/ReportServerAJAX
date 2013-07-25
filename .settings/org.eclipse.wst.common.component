@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="2.0">
+  <wb-module deploy-name="ReportServer">
+    <property name="context-root" value="ReportServer"/>
+    <wb-resource deploy-path="/" source-path="src/main/webapp"/>
+    <property name="java-output-path" value="/target/classes"/>
+    <dependent-module archiveName="PSOCommons-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/inmobi/psocommons/PSOCommons/1.0-SNAPSHOT/PSOCommons-1.0-SNAPSHOT.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="poi-3.9.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/poi/poi/3.9/poi-3.9.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-codec-1.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.5/commons-codec-1.5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="testng-6.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/testng/testng/6.0.1/testng-6.0.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="bsh-2.0b4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/beanshell/bsh/2.0b4/bsh-2.0b4.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jcommander-1.12.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/beust/jcommander/1.12/jcommander-1.12.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="snakeyaml-1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/yaml/snakeyaml/1.6/snakeyaml-1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="mysql-connector-java-5.1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="gson-1.7.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/google/code/gson/gson/1.7.1/gson-1.7.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
+  </wb-module>
+</project-modules>

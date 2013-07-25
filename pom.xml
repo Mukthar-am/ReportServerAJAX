@@ -1,14 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ReportServer</groupId>
-  <artifactId>ReportServer</artifactId>
-  <version>0.1</version>
-  <packaging>war</packaging>
-  <!-- <name>ReportServerAJAX</name> -->
-  <description>ReportServerAJAX</description>
-  
-  
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ReportServer</groupId>
+	<artifactId>ReportServer</artifactId>
+	<version>0.1</version>
+	<packaging>war</packaging>
+	<!-- <name>ReportServerAJAX</name> -->
+	<description>ReportServerAJAX</description>
+
+
+
 	<!-- mvn clean install package tomcat7:redeploy -->
 	<!-- mvn eclipse:eclipse -Dwtpversion=2.0 => To convert to Maven web project 
 		to support Eclipse IDE -->
@@ -16,6 +17,12 @@
 	<!-- mvn clean install cargo:deployer-deploy OR mvn clean install cargo:deployer-redeploy -->
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.inmobi.psocommons</groupId>
+			<artifactId>PSOCommons</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -50,7 +57,7 @@
 			<artifactId>gson</artifactId>
 			<version>1.7.1</version>
 		</dependency>
-		
+
 	</dependencies>
 
 
@@ -129,6 +136,6 @@
 		</plugins>
 
 	</build>
-  
-  
+
+
 </project>
