@@ -8,12 +8,12 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$('#dimension').change(function(event) {
-			var $dim = $("select#dimension").val();
+		$('#country').change(function(event) {
+			var $country = $("select#country").val();
 			$.get('ActionServlet', {
-				dimension : $dim
+				countryname : $country
 			}, function(responseJson) {
-				var $select = $('#details');
+				var $select = $('#states');
 				$select.find('option').remove();
 				$.each(responseJson, function(key, value) {
 					$('<option>').val(key).text(value).appendTo($select);
@@ -24,31 +24,17 @@
 </script>
 </head>
 <body>
-
-	<h1>PSO webapp server: Results Page</h1>
-	<img src="/ReportServer/images/index.jpg" align="right"  />
-	
-	<br />
-	Group Results By:
-	<select id="dimension">
-		<option>Group by...</option>
-		<option value="Slot">Slot</option>
-		<option value="Creative">Creative</option>
-		<option value="Sdk">Sdk</option>
-		<option value="Platform">Platform</option>
-		<option value="Os-Version">Os-Version</option>
+	<h1>AJAX calls to Servlet using JQuery and JSON</h1>
+	Select Country:
+	<select id="country">
+		<option>Select Country</option>
+		<option value="India">India</option>
+		<option value="US">US</option>
 	</select>
-
 	<br />
-	<br /> Dimension Value:
-	<select id="details">
-		<option>details</option>
+	<br /> Select State:
+	<select id="states">
+		<option>Select State</option>
 	</select>
-	
-	<br/>
-	<br /><input type="button" id="submit" value="Submit Query">
-	
-
-	
 </body>
 </html>

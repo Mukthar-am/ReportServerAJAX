@@ -1,9 +1,11 @@
 package com.reports;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,51 +14,50 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+
 public class ActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String LOGTAG = "+ [ActionServlet]: ";
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+	static String psoResourcePkg = "/com/reports";
+	String INPUT_CONFIGS = psoResourcePkg + "/config.properties";
+
+
 	public ActionServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String country=request.getParameter("countryname");
+		String reqProperty = request.getParameter("dimension");
 
 		Enumeration enAttr = request.getAttributeNames(); 
 		while(enAttr.hasMoreElements()){
 			String attributeName = (String)enAttr.nextElement();
 			System.out.println("Attribute Name - "+attributeName+", Value - "+(request.getAttribute(attributeName)).toString());
 		}
-
-
-
-		Map<String, String> ind = new LinkedHashMap<String, String>();
-		ind.put("1", "New delhi");
-		ind.put("2", "Tamil Nadu");
-		ind.put("3", "Kerala");
-		ind.put("4", "Andhra Pradesh");
-
-		Map<String, String> us = new LinkedHashMap<String, String>();
-		us.put("1", "Washington");
-		us.put("2", "California");
-		us.put("3", "Florida");
-		us.put("4", "New York");
-
-		String json = null ;
-		if(country.equals("India")){
-			json= new Gson().toJson(ind);   
+		
+		// Read data from config-props file
+		Properties prop = new Properties();
+		InputStream inputStream = ActionServlet.class.getClassLoader().getResourceAsStream(INPUT_CONFIGS);
+		prop.load(inputStream);
+		
+		String dimensionProps = prop.getProperty( reqProperty.toLowerCase() );
+		if (dimensionProps == null) {
+			System.out.println(LOGTAG + "ERROR: Could not found dimension property!");
 		}
-		else if(country.equals("US")){
-			json = new Gson().toJson(us);  
+		
+		String[] dimensions = dimensionProps.split(",");
+
+		Map<Integer, String> ind = new LinkedHashMap<Integer, String>();
+		Integer inputIndex = 1;
+		for (String slot : dimensions) {
+			ind.put(inputIndex, slot);
+			inputIndex++;
 		}
+		
+		String json= new Gson().toJson(ind);		
+		System.out.println("Json: " + json.toString());
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
